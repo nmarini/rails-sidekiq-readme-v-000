@@ -25,6 +25,44 @@
 #define LG_SIZEOF_LONG 3
 #define SIZEOF_LONG_LONG 8
 #define LG_SIZEOF_LONG_LONG 3
+#define SIZEOF_INTMAX_T 8
+#define LG_SIZEOF_INTMAX_T 3
+#define HAVE_CPU_SPINWAIT 1
+#define CPU_SPINWAIT __asm__ volatile("pause")
+#define LG_VADDR 48
+#define LG_VADDR 48
+#define JEMALLOC_PURGE_MADVISE_DONTNEED_ZEROS  
+#define JEMALLOC_HAS_ALLOCA_H 1
+#define JEMALLOC_PROC_SYS_VM_OVERCOMMIT_MEMORY  
+#define JEMALLOC_THREADED_INIT  
+#define JEMALLOC_USE_CXX_THROW  
+#define HAVE_MALLOC_H 1
+#define JEMALLOC_USABLE_SIZE_CONST 
+#define JEMALLOC_HAVE_ATTR  
+#define JEMALLOC_HAVE_ATTR_ALLOC_SIZE  
+#define JEMALLOC_HAVE_ATTR_FORMAT_GNU_PRINTF  
+#define JEMALLOC_HAVE_ATTR_FORMAT_PRINTF  
+#define JEMALLOC_PREFIX "je_"
+#define JEMALLOC_CPREFIX "JE_"
+#define JEMALLOC_OVERRIDE_MEMALIGN  
+#define JEMALLOC_OVERRIDE_VALLOC  
+#define JEMALLOC_PRIVATE_NAMESPACE je_
+#define JEMALLOC_CONFIG_MALLOC_CONF ""
+#define JEMALLOC_STATS  
+#define JEMALLOC_MAPS_COALESCE  
+#define JEMALLOC_RETAIN  
+#define JEMALLOC_DSS  
+#define JEMALLOC_FILL  
+#define JEMALLOC_CACHE_OBLIVIOUS  
+#define JEMALLOC_INTERNAL_UNREACHABLE __builtin_unreachable
+#define JEMALLOC_INTERNAL_FFSLL __builtin_ffsll
+#define JEMALLOC_INTERNAL_FFSL __builtin_ffsl
+#define JEMALLOC_INTERNAL_FFS __builtin_ffs
+#define LG_QUANTUM 3
+#define LG_PAGE 12
+#define LG_HUGEPAGE 21
+#define JEMALLOC_HAVE_PTHREAD  
+#define HAVE_PTHREAD_H 1
 /* end confdefs.h.  */
 #include <stdio.h>
 #ifdef HAVE_SYS_TYPES_H
@@ -59,35 +97,4 @@
 #ifdef HAVE_UNISTD_H
 # include <unistd.h>
 #endif
-static long int longval () { return (long int) (sizeof (intmax_t)); }
-static unsigned long int ulongval () { return (long int) (sizeof (intmax_t)); }
-#include <stdio.h>
-#include <stdlib.h>
-int
-main ()
-{
-
-  FILE *f = fopen ("conftest.val", "w");
-  if (! f)
-    return 1;
-  if (((long int) (sizeof (intmax_t))) < 0)
-    {
-      long int i = longval ();
-      if (i != ((long int) (sizeof (intmax_t))))
-	return 1;
-      fprintf (f, "%ld", i);
-    }
-  else
-    {
-      unsigned long int i = ulongval ();
-      if (i != ((long int) (sizeof (intmax_t))))
-	return 1;
-      fprintf (f, "%lu", i);
-    }
-  /* Do not output a trailing newline, as this causes \r\n confusion
-     on some platforms.  */
-  return ferror (f) || fclose (f) != 0;
-
-  ;
-  return 0;
-}
+#include <dlfcn.h>
